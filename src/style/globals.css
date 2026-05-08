@@ -54,7 +54,7 @@ a{
   font-size: 17px;
   margin: 10px 0;
 }
-.inputArea p{
+.inputArea p, .errorMsg{
   margin: 0;
   width: 300px;
   color: red;
