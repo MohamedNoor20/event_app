@@ -1,5 +1,7 @@
 body{
   background-color: rgb(92, 65, 30);
+  margin: 0; 
+  padding: 0;
 }
 
 a{
@@ -58,4 +60,200 @@ a{
   margin: 0;
   width: 300px;
   color: red;
+}
+
+
+
+
+
+
+
+
+/* For The Booking Page */
+
+/* Success Screen */
+.successContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  padding: 1rem;
+}
+
+.successCard {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 28rem;
+  width: 100%;
+  text-align: center;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.successText {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.successSubtext {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Booking Page Layout */
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 3rem 1rem;
+}
+
+.contentWrapper {
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header */
+.headerTitle {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.headerSubtitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Card Container */
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Section Headers */
+.sectionHeaderBlue {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #eff6ff;
+}
+
+.sectionTitleBlue {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1e3a8a;
+}
+
+.sectionHeaderGray {
+  padding: 1.25rem 1rem;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.sectionTitleGray {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Data Lists (Ticket/User details) */
+.dlList {
+  display: flex;
+  flex-direction: column;
+}
+
+.dlRow {
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dlRow:last-child {
+  border-bottom: none;
+}
+
+.dtLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.ddValue {
+  font-size: 0.875rem;
+  color: #111827;
+  grid-column: span 2 / span 2;
+  margin-top: 0;
+}
+
+.ddValueBold {
+  font-weight: 600;
+}
+
+.ddValuePrice {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancelBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.cancelBtn:hover {
+  background-color: #f9fafb;
+}
+
+.confirmBtn {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #2563eb;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.confirmBtnDisabled {
+  background-color: #60a5fa;
+  cursor: not-allowed;
 }
