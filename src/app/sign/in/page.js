@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UsernameValidation } from "@/components/validation/username";
 import { PasswordValidation } from "@/components/validation/password";
+import {Navbar} from "@/components/nav/nav";
 
 export default function User() {
   const [username, setUsername] = useState("");
@@ -53,6 +54,9 @@ export default function User() {
   return (
     <div className="signHeader">
       <h1>Sign in</h1>
+      <div>
+        <Navbar/>
+      </div>
       <div className="aligning">
         <form className="form" onSubmit={handleSubmit}>
           <UsernameValidation
@@ -89,3 +93,4 @@ export default function User() {
     </div>
   );
 }
+

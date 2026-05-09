@@ -2,14 +2,20 @@ body{
   background-color: rgb(92, 65, 30);
 }
 
+h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 a{
   color: white;
   text-decoration: none;
 }
-
+/* sign */
 .form{
   display: grid;
-  align-items: center;
+  align-navItems: center;
   justify-content: center;
 }
 .input {
@@ -38,11 +44,11 @@ a{
 .signHeader h1{
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-navItems: center;
 }
 .aligning{
   display: grid;
-  align-items: center;
+  align-navItems: center;
   justify-content: center;
 }
 .signUp, .signIn{
@@ -58,4 +64,100 @@ a{
   margin: 0;
   width: 300px;
   color: red;
+}
+
+/* nav */
+
+.navList{
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navItem a{
+  font-size: larger;
+}
+
+
+.ham-menu {
+  cursor: pointer;
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 5px;
+  margin: 3px;
+  background-color: white;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+
+/* media */
+
+@media screen and (max-width:500px) {
+     
+  .ham-menu {
+    cursor: pointer;
+    display: none;
+    z-index: 10;
+  }
+
+  .ul-cont {
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    right: -200%;
+    transition: all 0.5s ease-in-out;
+    top: 70px;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 10;
+    display: none;
+    background: #231b11;
+  }
+
+
+  .ul-cont.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    opacity: 1;
+  }
+
+  .navList {
+    display: block !important;
+  }
+
+  .navItem {
+    margin: 10px 0;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  .ham-menu {
+    display: block;
+  }
+
+  .ham-menu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .ham-menu.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .ham-menu.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+  }
 }
