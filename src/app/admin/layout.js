@@ -31,4 +31,13 @@ useEffect(() => {
     }
     setLoading(false);
   }, [router]);
+// While making a check , show loading there
+  if (loading) {
+    return <div className="text-center p-10">Loading...</div>;
+  }
+
+// If the user is not admin , show nothing
+  if (!isAdmin) {
+    return null;
+  }  
 }
