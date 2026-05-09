@@ -1,19 +1,20 @@
-body{
+body {
   background-color: rgb(92, 65, 30);
-  margin: 0; 
+  margin: 0;
   padding: 0;
 }
 
-a{
+a {
   color: white;
   text-decoration: none;
 }
 
-.form{
+.form {
   display: grid;
   align-items: center;
   justify-content: center;
 }
+
 .input {
   width: 300px;
   height: 20px;
@@ -22,41 +23,49 @@ a{
   margin: 10px 0;
 }
 
-.rightSide{
+.rightSide {
   display: flex;
   margin-left: auto;
 }
-.submit{
+
+.submit {
   background-color: grey;
   color: white;
   cursor: not-allowed;
 }
-.submitOn{
+
+.submitOn {
   background-color: white;
   color: black;
   cursor: pointer;
   border: 1px solid black;
 }
-.signHeader h1{
+
+.signHeader h1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.aligning{
+
+.aligning {
   display: grid;
   align-items: center;
   justify-content: center;
 }
-.signUp, .signIn{
+
+.signUp,
+.signIn {
   margin-right: auto;
 }
-.inputArea input{
+
+.inputArea input {
   width: 300px;
   height: 26px;
   font-size: 17px;
   margin: 10px 0;
 }
-.inputArea p{
+
+.inputArea p {
   margin: 0;
   width: 300px;
   color: red;
@@ -256,4 +265,173 @@ a{
 .confirmBtnDisabled {
   background-color: #60a5fa;
   cursor: not-allowed;
+}
+
+
+
+
+/*for event pages*/
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fdf8f0;
+  color: #5c3d2e;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 2rem;
+  color: #5c3d2e;
+  margin-bottom: 20px;
+}
+
+.event-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6d8;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-details {
+  margin: 16px 0;
+  padding: 16px 0;
+  border-top: 1px solid #f0e6d8;
+  border-bottom: 1px solid #f0e6d8;
+}
+
+.event-details div {
+  margin: 8px 0;
+  color: #6b4c36;
+}
+
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-secondary {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d97706;
+}
+
+.btn-success {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  padding: 8px 16px;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-secondary {
+  background-color: #8b6b4f;
+  color: white;
+  padding: 8px 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #5c3d2e;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5d5bf;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .events-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
 }
