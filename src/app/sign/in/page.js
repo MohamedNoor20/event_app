@@ -42,7 +42,7 @@ export default function User() {
         return;
       }
 
-      router.replace("/events");
+      router.replace("/Event");
       
     } catch (err) {
       setServerError("Unable to connect. Please try again.");
