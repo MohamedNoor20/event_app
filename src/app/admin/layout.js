@@ -40,4 +40,19 @@ useEffect(() => {
   if (!isAdmin) {
     return null;
   }  
+ return (
+<div className="min-h-screen bg-gray-100">
+ {/* Navigation bar*/}
+   <nav className="bg-white shadow-md p-4">
+    <div className="max-w-6xl mx-auto flex gap-6">
+     <Link href="/admin" className="hover:text-blue-600">Dashboard</Link>
+       <Link href="/admin/users" className="hover:text-blue-600">Manage Users</Link>
+         <Link href="/admin/events" className="hover:text-blue-600">Manage Events</Link>
+    </div>
+ </nav>
+<main className="max-w-6xl mx-auto p-6">
+  {children}
+      </main>
+    </div>
+  );
 }
