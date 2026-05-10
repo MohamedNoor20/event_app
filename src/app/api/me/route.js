@@ -28,7 +28,7 @@ export async function GET(request) {
   }
 
   const [rows] = await pool.query(
-    "SELECT UserID, FirstName, Role FROM Users WHERE UserID = ?",
+    "SELECT UserID, Firstname, Lastname, Username, Role FROM Users WHERE UserID = ?",
     [user.UserID]
   );
 

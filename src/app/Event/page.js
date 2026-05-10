@@ -4,7 +4,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Link from 'next/link';
 import { Navbar } from "@/components/nav/nav";
 import { UserInfo } from "@/components/UserInfo";
 
@@ -72,14 +71,13 @@ export default function EventsPage() {
       <div className="events-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
         <h1>🎉 Upcoming Events</h1>
 
-
         {user && (user.Role === 'admin' || user.Role === 'organiser') &&
           (
-            <Link href="/Create_event">
+            <a href="/Create_event" style={{ textDecoration: 'none' }}>
               <button className="btn-success">
                 + Create Event
               </button>
-            </Link>
+            </a>
           )}
       </div>
 
@@ -109,11 +107,13 @@ export default function EventsPage() {
                 <div>💰 Price: ${event.Amount}</div>
               </div>
 
-              {/* Optional: simple action */}
+                {/* Optional: simple action */}
               <div style={{ marginTop: '15px' }}>
-                <button className="btn-primary">
-                  Book Now
-                </button>
+                <a href={`/Book?eventId=${event.EventID}`} style={{ textDecoration: 'none' }}>
+                  <button className="btn-primary">
+                    Book Now
+                  </button>
+                </a>
               </div>
             </div>
           ))}
