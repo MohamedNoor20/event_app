@@ -58,7 +58,7 @@ export default function EventControl() {
                         </div>
 
                         <div style={{ display: 'flex', gap: '10px' }}>
-                            <a href={`/Event/edit/${event.EventID}`} style={{ textDecoration: 'none' }}>
+                            <a href={`/Event_control/edit/${event.EventID}`} style={{ textDecoration: 'none' }}>
                                 <button className="btn-warning">
                                     Edit
                                 </button>
