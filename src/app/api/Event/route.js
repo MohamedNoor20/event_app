@@ -86,12 +86,21 @@ export async function POST(request) {
   if (!date || new Date(date) < new Date()) {
     return Response.json({ success: false, message: 'Date cannot be in the past' }, { status: 400 });
   }
+  
+  // Safely parse numbers
+  const parsedAmount = parseFloat(amount) || 0;
+  const parsedMaxSeat = parseInt(maxSeat) || 10;
+  
+  // Prevent numbers that are too large for the database
+  if (parsedAmount > 9999.99) {
+    return Response.json({ success: false, message: 'Amount cannot exceed €9,999.99' }, { status: 400 });
+  }
 
   //save to database
   const [result] = await pool.query(
     `INSERT INTO EventTBL (UserID, Title, Description, Category, Location, Date, MaxSeat, Amount)
          VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
-    [user.UserID, title, description, category, location, date, maxSeat || 10, amount || 0]
+    [user.UserID, title, description, category, location, date, parsedMaxSeat, parsedAmount]
   );
 
   return Response.json({ success: true, message: 'Event created!', eventId: result.insertId });
@@ -119,11 +128,19 @@ export async function PUT(request) {
     return Response.json({ success: false, message: 'You can only edit your own events' }, { status: 403 });
   }
 
+  // Safely parse numbers
+  const parsedAmount = parseFloat(amount) || 0;
+  const parsedMaxSeat = parseInt(maxSeat) || 10;
+
+  if (parsedAmount > 9999.99) {
+    return Response.json({ success: false, message: 'Amount cannot exceed €9,999.99' }, { status: 400 });
+  }
+
   //update the event
   await pool.query(
     `UPDATE EventTBL SET Title=?, Description=?, Category=?, Location=?, Date=?, MaxSeat=?, Amount=?
          WHERE EventID = ?`,
-    [title, description, category, location, date, maxSeat, amount, eventId]
+    [title, description, category, location, date, parsedMaxSeat, parsedAmount, eventId]
   );
 
   return Response.json({ success: true, message: 'Event updated!' });

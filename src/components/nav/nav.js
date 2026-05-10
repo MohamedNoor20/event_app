@@ -66,9 +66,7 @@ export function Navbar() {
               <Link href="/" onClick={closeMenu}>Home</Link>
             </li>
 
-            <li className="navItem">
-              <Link href="/Booking" onClick={closeMenu}>Booking</Link>
-            </li>
+
 
             <li className="navItem">
               <Link href="/Event" onClick={closeMenu}>Events</Link>
