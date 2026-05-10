@@ -57,19 +57,18 @@ export default function EventControl() {
                             <div>📍 {event.Location}</div>
                         </div>
 
-                        <div style={{ display: 'flex', gap: '10px' }}>
-                            <a href={`/Event_control/edit/${event.EventID}`} style={{ textDecoration: 'none' }}>
-                                <button className="btn-warning">
-                                    Edit
-                                </button>
+                        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+                            <a href={`/Event_control/edit/${event.EventID}`}>
+                                <button className="btn-warning">Edit</button>
                             </a>
 
-                            <button
-                                className="btn-danger"
-                                onClick={() => handleDelete(event.EventID)}
-                            >
+                            <button className="btn-danger" onClick={() => handleDelete(event.EventID)}>
                                 Delete
                             </button>
+
+                            <a href={`/event_bookings/${event.EventID}`}>
+                                <button className="btn-info">👥 View Bookings</button>
+                            </a>
                         </div>
                     </div>
                 );
