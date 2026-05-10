@@ -7,7 +7,6 @@ import {UsernameValidation} from "@/components/validation/username";
 import {PasswordValidation} from "@/components/validation/password";
 import {ReValidate} from "@/components/validation/reValidation";
 import { useRouter } from "next/navigation";
-import {Navbar} from "@/components/nav/nav"
 
 
 export default function SignUp(){

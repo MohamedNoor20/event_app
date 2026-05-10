@@ -4,7 +4,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { Navbar } from "@/components/nav/nav";
 import { UserInfo } from "@/components/UserInfo";
 
 export default function EventsPage() {
@@ -64,7 +63,6 @@ export default function EventsPage() {
     <div className="container">
       <div>
         <UserInfo />
-        <Navbar />
       </div>
 
       {/* Header */}

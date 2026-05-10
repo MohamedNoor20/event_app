@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { Navbar } from "@/components/nav/nav";
 import { UserInfo } from "@/components/UserInfo";
 import "../style/globals.css";
 
@@ -104,7 +103,6 @@ export default function Home() {
       <div className="pageContainer">
         <div className="contentWrapper">
           <div className="navWrapper">
-             <Navbar />
              <UserInfo />
           </div>
           <div className="card cardCentered">
@@ -131,7 +129,6 @@ export default function Home() {
     <div className="pageContainer">
       <div className="contentWrapper">
         <div className="navWrapper">
-           <Navbar />
            <UserInfo />
         </div>
 
