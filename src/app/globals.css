@@ -1,0 +1,65 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body{
+  background-color: rgb(92, 65, 30);
+}
+
+a{
+  color: white;
+  text-decoration: none;
+}
+
+.form{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.input {
+  width: 300px;
+  height: 20px;
+  font-size: 16px;
+  padding: 5px;
+  margin: 10px 0;
+}
+
+.rightSide{
+  display: flex;
+  margin-left: auto;
+}
+.submit{
+  background-color: grey;
+  color: white;
+  cursor: not-allowed;
+}
+.submitOn{
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  border: 1px solid black;
+}
+.signHeader h1{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aligning{
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.signUp, .signIn{
+  margin-right: auto;
+}
+.inputArea input{
+  width: 300px;
+  height: 26px;
+  font-size: 17px;
+  margin: 10px 0;
+}
+.inputArea p, .errorMsg{
+  margin: 0;
+  width: 300px;
+  color: red;
+}

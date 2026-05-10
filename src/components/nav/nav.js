@@ -89,7 +89,7 @@ export function Navbar() {
 
             {role === "admin" && (
               <li className="navItem">
-                <Link href="/user_control" onClick={closeMenu}>Admin</Link>
+                <Link href="/admin" onClick={closeMenu}>Admin</Link>
               </li>
             )}
 

@@ -1,9 +1,12 @@
-body {
-  background-color: rgb(92, 65, 30);
-  margin: 0;
-  padding: 0;
-}
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+body {
+    background-color: rgb(92, 65, 30);
+    margin: 0;
+    padding: 0;
+}
 
 h1 {
   display: flex;
