@@ -51,7 +51,7 @@ export async function GET(request, { params }) {
 
     //get all users who booked this event
     const [bookings] = await pool.query(
-        `SELECT b.BookID, b.UserID, u.Username, u.Firstname, u.Lastname, u.Email
+        `SELECT b.BookID, b.UserID, u.Username, u.Firstname, u.Lastname
          FROM Book b
          JOIN Users u ON b.UserID = u.UserID
          WHERE b.EventID = ?
