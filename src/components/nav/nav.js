@@ -67,7 +67,7 @@ export function Navbar() {
             </li>
 
             <li className="navItem">
-              <Link href="/Booking" onClick={closeMenu}>Booking</Link>
+              <Link href="/Book" onClick={closeMenu}>Booking</Link>
             </li>
 
             <li className="navItem">
