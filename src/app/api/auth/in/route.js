@@ -14,6 +14,31 @@ export async function POST(request) {
       );
     }
 
+    const [adminCheck] = await pool.query(
+      "SELECT * FROM Users WHERE Username = ?",
+      ["admin"]
+    );
+
+    if (adminCheck.length === 0) {
+      const hashedPassword = await bcrypt.hash("Admin123@", 10);
+
+      await pool.query(
+        `INSERT INTO Users 
+        (Firstname, Lastname, Username, Password, DOB, Role)
+        VALUES (?, ?, ?, ?, ?, ?)`,
+        [
+          "manager",
+          "admin",
+          "admin@gmail.com",
+          hashedPassword,
+          "2001-01-01",
+          "admin"
+        ]
+      );
+
+      console.log("Default admin created");
+    }
+
     // Look up user by Username
     const [rows] = await pool.query(
       "SELECT * FROM Users WHERE Username = ?",
@@ -59,7 +84,7 @@ export async function POST(request) {
     });
 
     return res;
-    
+
   } catch (err) {
     console.error("Login error:", err);
     return Response.json(
