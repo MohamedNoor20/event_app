@@ -1,5 +1,6 @@
 import pool from "@/lib/db";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export async function POST(request) {
   try {
@@ -37,17 +38,28 @@ export async function POST(request) {
     }
 
 
-    const res = Response.json(
-      { role: user.Role, userID: user.UserID },
+    const res = NextResponse.json(
+      {
+        role: user.Role,
+        userID: user.UserID
+      },
       { status: 200 }
     );
 
-    res.headers.set(
-      "Set-Cookie",
-      `session=${user.UserID}; role=${user.Role}; HttpOnly; Path=/; Max-Age=86400; SameSite=Strict`
-    );
+    res.cookies.set("session", user.UserID.toString(), {
+      path: "/",
+      maxAge: 86400,
+      sameSite: "strict",
+    });
+
+    res.cookies.set("role", user.Role.toLowerCase(), {
+      path: "/",
+      maxAge: 86400,
+      sameSite: "strict",
+    });
 
     return res;
+    
   } catch (err) {
     console.error("Login error:", err);
     return Response.json(

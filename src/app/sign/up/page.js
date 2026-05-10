@@ -7,6 +7,7 @@ import {UsernameValidation} from "@/components/validation/username";
 import {PasswordValidation} from "@/components/validation/password";
 import {ReValidate} from "@/components/validation/reValidation";
 import { useRouter } from "next/navigation";
+import {Navbar} from "@/components/nav/nav"
 
 
 export default function SignUp(){
@@ -144,6 +145,9 @@ export default function SignUp(){
   return(
     <div className="signHeader">
       <h1>Sign Up</h1>
+      <div>
+        <Navbar/>
+      </div>
       <div className="aligning">
         <form className="form" onSubmit={handleForm}>
           <div className="inputArea">

@@ -3,61 +3,122 @@
 
 'use client';
 
-import {Navbar} from "@/components/nav/nav";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { Navbar } from "@/components/nav/nav";
+import { UserInfo } from "@/components/UserInfo";
 
 export default function EventsPage() {
-    const [events, setEvents] = useState([]);
-    const [loading, setLoading] = useState(true);
+  const [events, setEvents] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [user, setUser] = useState(null);
 
-    //fetch events when page loads
-    useEffect(() => {
-        fetch('/api/Event')
-            .then(res => res.json())
-            .then(data => {
-                if (data.success) setEvents(data.events);
-                setLoading(false);
-            });
-    }, []);
+  // fetch events on load
+  useEffect(() => {
 
-    if (loading) return <div className="container" style={{ textAlign: 'center', padding: '50px' }}>Loading events...</div>;
+    const fetchEvents = async () => {
+      try {
+        const res = await fetch('/api/Event');
+        const data = await res.json();
 
+        if (data.success) {
+          setEvents(data.events);
+        }
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    const fetchUser = async () => {
+      try {
+        const res = await fetch('/api/me');
+
+        if (!res.ok) return;
+
+        const data = await res.json();
+
+        if (data.success) {
+          setUser(data.user);
+        }
+      } catch (error) {
+        console.error(error);
+      }
+    };
+
+    fetchEvents();
+    fetchUser();
+
+  }, []);
+
+  // loading state
+  if (loading) {
     return (
-      <div>
-        <div>
-          <Navbar/>
-        </div>
-        <div className="container">
-            <div className="events-header">
-                <h1>🎉 Upcoming Events</h1>
-                <Link href="/Create_event">
-                    <button className="btn-success">+ Create Event</button>
-                </Link>
-            </div>
-
-            {events.length === 0 ? (
-                <div className="event-card" style={{ textAlign: 'center' }}>
-                    <p>No events yet. Be the first to create one!</p>
-                </div>
-            ) : (
-                events.map(event => (
-                    <div key={event.EventID} className="event-card">
-                        <h2>{event.Title}</h2>
-                        <p>{event.Description || 'Join us for this amazing event!'}</p>
-                        <div className="event-details">
-                            <div>📅 {new Date(event.Date).toLocaleDateString()}</div>
-                            <div>📍 {event.Location}</div>
-                            <div>🎟️ {event.MaxSeat} seats available</div>
-                            <div>💰 ${event.Amount}</div>
-                        </div>
-                        <Link href={`/Event/${event.EventID}`}>
-                            <button className="btn-primary">View Details →</button>
-                        </Link>
-                    </div>
-                ))
-            )}
-        </div>
+      <div className="container" style={{ textAlign: 'center', padding: '50px' }}>
+        <h2>Loading events...</h2>
       </div>
     );
+  }
+
+  return (
+    <div className="container">
+      <div>
+        <UserInfo />
+        <Navbar />
+      </div>
+
+      {/* Header */}
+      <div className="events-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>🎉 Upcoming Events</h1>
+
+
+        {user && (user.Role === 'admin' || user.Role === 'organiser') &&
+          (
+            <Link href="/Create_event">
+              <button className="btn-success">
+                + Create Event
+              </button>
+            </Link>
+          )}
+      </div>
+
+      {/* No events */}
+      {events.length === 0 ? (
+        <div className="event-card" style={{ textAlign: 'center', marginTop: '20px' }}>
+          <p>No events available right now.</p>
+        </div>
+      ) : (
+        /* Events List */
+        <div style={{ marginTop: '20px' }}>
+          {events.map((event) => (
+            <div key={event.EventID} className="event-card" style={{ marginBottom: '20px' }}>
+              <h2>{event.Title}</h2>
+
+              <p>
+                {event.Description
+                  ? event.Description
+                  : 'Join us for this amazing event!'}
+              </p>
+
+              <div className="event-details" style={{ marginTop: '10px' }}>
+                <div>📅 Date: {new Date(event.Date).toLocaleDateString()}</div>
+                <div>📍 Location: {event.Location}</div>
+                <div>📂 Category: {event.Category}</div>
+                <div>🎟️ Seats: {event.MaxSeat}</div>
+                <div>💰 Price: ${event.Amount}</div>
+              </div>
+
+              {/* Optional: simple action */}
+              <div style={{ marginTop: '15px' }}>
+                <button className="btn-primary">
+                  Book Now
+                </button>
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
 }

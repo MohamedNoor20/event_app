@@ -1,18 +1,17 @@
-import "@/style/globals.css"
-import Link from "next/link"
-import {Navbar} from "@/components/nav/nav"
+import "@/style/globals.css";
+import Link from "next/link";
+import {Navbar} from "@/components/nav/nav";
+import {UserInfo} from "@/components/UserInfo";
 
 export default function Home(){
   return(
     <div>
       <h1>Home Page</h1>
+      
       <div>
+        <UserInfo/>
         <Navbar/>
       </div>
-
-      <Link href ={"/sign/up"}>Sign Up</Link>
-      <p></p>
-      <Link href ={"/sign/in"}>Sign In</Link>
     </div>
   );
 }

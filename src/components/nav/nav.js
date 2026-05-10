@@ -27,16 +27,25 @@ export function Navbar() {
   }, [isOpen]);
 
 
-  useEffect(() => {
-    const cookies = document.cookie;
-    const roleCookie = cookies
-      .split("; ")
-      .find((row) => row.startsWith("role="));
+ useEffect(() => {
+  const fetchUser = async () => {
+    try {
+      const res = await fetch("/api/me");
 
-    if (roleCookie) {
-      setRole(roleCookie.split("=")[1]);
+      if (!res.ok) return;
+
+      const data = await res.json();
+
+      if (data.success) {
+        setRole(data.user.Role.toLowerCase());
+      }
+    } catch (error) {
+      console.error("Failed to fetch user:", error);
     }
-  }, []);
+  };
+
+  fetchUser();
+}, []);
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -64,6 +73,12 @@ export function Navbar() {
             <li className="navItem">
               <Link href="/Event" onClick={closeMenu}>Events</Link>
             </li>
+
+            {(role === "organiser" || role === "admin") && (
+              <li className="navItem">
+                <Link href="/Create_event" onClick={closeMenu}>Create Event</Link>
+              </li>
+            )}
 
             {(role === "organiser" || role === "admin") && (
               <li className="navItem">
