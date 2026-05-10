@@ -41,7 +41,7 @@ export default function EventControl() {
             <h1>⚙️ Event Control Panel</h1>
 
             {events.map(event => {
-                
+
                 const canManage =
                     user.Role === 'admin' ||
                     user.UserID === event.UserID;
@@ -58,9 +58,11 @@ export default function EventControl() {
                         </div>
 
                         <div style={{ display: 'flex', gap: '10px' }}>
-                            <button className="btn-warning">
-                                Edit
-                            </button>
+                            <a href={`/Event/edit/${event.EventID}`} style={{ textDecoration: 'none' }}>
+                                <button className="btn-warning">
+                                    Edit
+                                </button>
+                            </a>
 
                             <button
                                 className="btn-danger"
