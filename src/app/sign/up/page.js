@@ -7,6 +7,7 @@ import {UsernameValidation} from "@/components/validation/username";
 import {PasswordValidation} from "@/components/validation/password";
 import {ReValidate} from "@/components/validation/reValidation";
 import { useRouter } from "next/navigation";
+import {Navbar} from "@/components/nav/nav"
 
 
 export default function SignUp(){
@@ -123,14 +124,14 @@ export default function SignUp(){
           role,
         }),
       });
- 
+
       const data = await res.json();
- 
+
       if (!res.ok) {
         setServerError(data.message || "Something went wrong");
         return;
       }
- 
+
       // send to login page
       router.push("/sign/in");
     } catch (err) {
@@ -142,88 +143,108 @@ export default function SignUp(){
   };
 
   return(
-    <div className="signHeader">
-      <h1>Sign Up</h1>
-      <div className="aligning">
-        <form className="form" onSubmit={handleForm}>
-          <div className="inputArea">
-            <input
-              type="text"
-              value={firstname}
-              placeholder="Firstname"
-              onChange={handleFN}
-              required
-              
-            ></input>
-            {errorFN && <p>{errorFN}</p>}
+    <div className="pageContainer">
+      <div className="contentWrapper">
+
+
+        {/* Sign Up Card */}
+        <div className="form-container">
+          <div className="cardCentered" style={{ padding: "0 0 2rem 0", background: "transparent" }}>
+            <h1 className="headerTitle">Sign Up</h1>
+            <p className="successText mt1">Create an account to start booking events.</p>
           </div>
 
-          <div className="inputArea">
-            <input
-              type="text"
-              value={lastname}
-              placeholder="Lastname"
-              onChange={handleLN}
-              required
-            ></input>
-            {errorLN && <p>{errorLN}</p>}
-          </div>
+          <form onSubmit={handleForm}>
+            
+            <div className="form-group">
+              <label className="form-label">First Name</label>
+              <input
+                type="text"
+                className="form-input"
+                value={firstname}
+                placeholder="Firstname"
+                onChange={handleFN}
+                required
+              />
+              {errorFN && <p className="error-message" style={{ padding: '8px', marginTop: '5px', marginBottom: 0 }}>{errorFN}</p>}
+            </div>
 
+            <div className="form-group">
+              <label className="form-label">Last Name</label>
+              <input
+                type="text"
+                className="form-input"
+                value={lastname}
+                placeholder="Lastname"
+                onChange={handleLN}
+                required
+              />
+              {errorLN && <p className="error-message" style={{ padding: '8px', marginTop: '5px', marginBottom: 0 }}>{errorLN}</p>}
+            </div>
 
-          <UsernameValidation
-            username={username}
-            setUsername={setUsername}
-            userError={userError}
-            setUserError={setUserError}
-          />
-          <PasswordValidation
-            password={password}
-            setPassword={setPassword}
-            passError={passError}
-            setPassError={setPassError}
-          />
-          <ReValidate
-            checkPass={checkPass}
-            setChekPass={setChekPass}
-            reError={reError}
-            setReError={setReError}
-            password={password}
-          />
-        
-          <div className="inputArea">
-            <input
-              type="date"
-              value={dob}
-              onChange={handleDob}
-              required
+            <UsernameValidation
+              username={username}
+              setUsername={setUsername}
+              userError={userError}
+              setUserError={setUserError}
             />
-            {dobError && <p className="errorMsg">{dobError}</p>}
+            <PasswordValidation
+              password={password}
+              setPassword={setPassword}
+              passError={passError}
+              setPassError={setPassError}
+            />
+            <ReValidate
+              checkPass={checkPass}
+              setChekPass={setChekPass}
+              reError={reError}
+              setReError={setReError}
+              password={password}
+            />
+
+            <div className="form-group">
+              <label className="form-label">Date of Birth</label>
+              <input
+                type="date"
+                className="form-input"
+                value={dob}
+                onChange={handleDob}
+                required
+              />
+              {dobError && <p className="error-message" style={{ padding: '8px', marginTop: '5px', marginBottom: 0 }}>{dobError}</p>}
+            </div>
+
+            <div className="form-group">
+              <label className="form-label">Role</label>
+              <select
+                className="form-input"
+                value={role}
+                onChange={(e) => setRole(e.target.value)}
+              >
+                <option value="attendee">Attendee</option>
+                <option value="organiser">Organiser</option>
+              </select>
+            </div>
+
+            {serverError && <p className="error-message">{serverError}</p>}
+
+            <div className="actionButtonsCenter">
+              <button
+                className={isValid && !loading ? "btn-primary btnLarge" : "submit btnLarge"}
+                disabled={!isValid || loading}
+                type="submit"
+                style={{ width: "100%" }}
+              >
+                {loading ? "Creating account..." : "Sign Up"}
+              </button>
+            </div>
+          </form>
+
+          <div className="actionButtonsCenter mt1">
+            <Link href={"/sign/in"} style={{ color: '#000000', fontWeight: 'bold' }}>
+              Already have an account? Sign In Here
+            </Link>
           </div>
- 
-          <div className="inputArea">
-            <select
-              value={role}
-              onChange={(e) => setRole(e.target.value)}
-            >
-              <option value="attendee">Attendee</option>
-              <option value="organiser">Organiser</option>
-            </select>
-          </div>
- 
-          {serverError && <p className="errorMsg">{serverError}</p>}
- 
-          <div className="rightSide">
-            <button
-              className={isValid ? "submitOn" : "submit"}
-              disabled={!isValid || loading}
-              type="submit"
-            >
-              {loading ? "Creating account..." : "Sign Up"}
-            </button>
-          </div>
-        </form>
-        <div className="signIn">
-          <Link href ={"/sign/in"}>Click Here To Sign In</Link>
         </div>
       </div>
     </div>

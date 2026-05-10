@@ -2,20 +2,152 @@
 @tailwind components;
 @tailwind utilities;
 
-body{
-  background-color: rgb(92, 65, 30);
+body {
+    background-color: rgb(92, 65, 30);
+    margin: 0;
+    padding: 0;
 }
 
-a{
+h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a {
   color: white;
   text-decoration: none;
 }
 
-.form{
+.centerMt50 { 
+  text-align: center;
+  margin-top: 50px;
+  color: white; 
+}
+.heroCard { 
+  max-width: 650px;
+  padding: 4rem 2rem;
+  margin: 0 auto; background: white;
+  border-radius: 16px; 
+}
+.heroTitle { 
+  margin-bottom: 1.5rem; 
+  font-size: 2.5rem;
+  color: #111827;
+ }
+.heroText { 
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #4b5563; 
+}
+.flexCenterGap1 { 
+  display: flex; gap: 1rem; 
+  justify-content: center; 
+}
+.btnLarge { 
+  padding: 0.85rem 1.75rem; 
+  font-size: 1.1rem; 
+}
+.navWrapper { 
+  justify-content: space-between; 
+  align-items: center; 
+  margin-bottom: 1rem; 
+  color: rgb(0, 0, 0); 
+}
+.cardCentered { 
+  padding: 3rem; 
+  text-align: center; 
+  background: white; 
+  border-radius: 16px; 
+  margin: 0 auto; 
+  max-width: 650px; 
+}
+.mt1 { 
+  margin-top: 1rem; 
+  display: inline-block; 
+}
+.actionButtonsCenter { 
+  display: flex; 
+  justify-content: center; 
+  margin-top: 1.5rem; 
+  gap: 1rem; 
+}
+.headerFlexWrap { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
+  color: white; 
+  margin-bottom: 20px;
+}
+.text12 { 
+  font-size: 1.2rem; 
+  color: #111827; 
+  margin-bottom: 15px;
+}
+.flexColGap15 { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.5rem; 
+}
+.eventCardFlex { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  flex-wrap: wrap; 
+  gap: 1.5rem; 
+  padding: 24px; 
+  box-sizing: border-box; 
+}
+.flex1Min { 
+  flex: 1 1 min-content; 
+}
+.eventTitleSm { 
+  font-size: 1.35rem; 
+  margin-top: 0; 
+  margin-bottom: 0.5rem; 
+  color: #111827; 
+}
+.eventCardDetails { 
+  margin: 0 0 0.75rem 0; 
+  font-size: 0.95rem; 
+  color: #6b7280; 
+}
+.pricePill { 
+  display: inline-block; 
+  color: #16a34a; 
+  background-color: #dcfce3; 
+  padding: 0.25rem 0.75rem; 
+  border-radius: 1rem; 
+  font-size: 0.85rem; 
+  font-weight: 600; 
+}
+.dangerBorder { 
+  border: 1px solid #fca5a5; 
+  color: #dc2626; 
+  background: transparent; 
+  padding: 8px 16px; 
+  border-radius: 8px; 
+  cursor: pointer; 
+  transition: 0.2s; 
+  font-weight: bold; }
+.dangerBorder:hover { 
+  background-color: #fee2e2; 
+}
+
+.headerSubtitle { 
+  margin-top: 5px; 
+}
+
+/* sign */
+
+.form {
   display: grid;
   align-items: center;
   justify-content: center;
 }
+
 .input {
   width: 300px;
   height: 20px;
@@ -24,42 +156,576 @@ a{
   margin: 10px 0;
 }
 
-.rightSide{
+.rightSide {
   display: flex;
   margin-left: auto;
 }
-.submit{
+
+.submit {
   background-color: grey;
   color: white;
   cursor: not-allowed;
 }
-.submitOn{
+
+.submitOn {
   background-color: white;
   color: black;
   cursor: pointer;
   border: 1px solid black;
 }
-.signHeader h1{
+
+.signHeader h1 {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.aligning{
+
+.aligning {
   display: grid;
   align-items: center;
   justify-content: center;
 }
-.signUp, .signIn{
+
+.signUp,
+.signIn {
   margin-right: auto;
 }
-.inputArea input{
+
+.inputArea input {
   width: 300px;
   height: 26px;
   font-size: 17px;
   margin: 10px 0;
 }
-.inputArea p, .errorMsg{
+
+.inputArea p {
   margin: 0;
   width: 300px;
   color: red;
+}
+
+/* nav */
+
+.navList {
+  list-style: none;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navItem a {
+  font-size: larger;
+}
+
+
+.ham-menu {
+  cursor: pointer;
+  display: none;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 5px;
+  margin: 3px;
+  background-color: white;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+/* For The Booking Page */
+
+/* Success Screen */
+.successContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f9fafb;
+  padding: 1rem;
+}
+
+.successCard {
+  background-color: #ffffff;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  max-width: 28rem;
+  width: 100%;
+  text-align: center;
+}
+
+.successTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 1rem;
+}
+
+.successText {
+  color: #4b5563;
+  margin-bottom: 1.5rem;
+}
+
+.successSubtext {
+  font-size: 0.875rem;
+  color: #6b7280;
+}
+
+/* Booking Page Layout */
+.pageContainer {
+  min-height: 100vh;
+  background-color: #f9fafb;
+  padding: 3rem 1rem;
+}
+
+.contentWrapper {
+  max-width: 48rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* Header */
+.headerTitle {
+  font-size: 1.875rem;
+  font-weight: 800;
+  color: #111827;
+}
+
+.headerSubtitle {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Card Container */
+.card {
+  background-color: #ffffff;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Section Headers */
+.sectionHeaderBlue {
+  padding: 1.25rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #eff6ff;
+}
+
+.sectionTitleBlue {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #1e3a8a;
+}
+
+.sectionHeaderGray {
+  padding: 1.25rem 1rem;
+  border-top: 1px solid #e5e7eb;
+  border-bottom: 1px solid #e5e7eb;
+  background-color: #f9fafb;
+}
+
+.sectionTitleGray {
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #111827;
+}
+
+/* Data Lists (Ticket/User details) */
+.dlList {
+  display: flex;
+  flex-direction: column;
+}
+
+.dlRow {
+  padding: 1rem 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.dlRow:last-child {
+  border-bottom: none;
+}
+
+.dtLabel {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.ddValue {
+  font-size: 0.875rem;
+  color: #111827;
+  grid-column: span 2 / span 2;
+  margin-top: 0;
+}
+
+.ddValueBold {
+  font-weight: 600;
+}
+
+.ddValuePrice {
+  font-weight: 700;
+  color: #16a34a;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.cancelBtn {
+  padding: 0.5rem 1rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #374151;
+  background-color: #ffffff;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.cancelBtn:hover {
+  color: #ffffff;
+  background-color: #ff0000;
+}
+
+.confirmBtn {
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid transparent;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #ffffff;
+  background-color: #2563eb;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.confirmBtn:hover:not(:disabled) {
+  background-color: #1d4ed8;
+}
+
+.confirmBtnDisabled {
+  background-color: #60a5fa;
+  cursor: not-allowed;
+}
+
+
+/*for event pages*/
+
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  min-height: 100vh;
+}
+
+
+
+.event-card {
+  background: white;
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #f0e6d8;
+  transition: transform 0.2s;
+}
+
+.event-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.event-details {
+  margin: 16px 0;
+  padding: 16px 0;
+  border-top: 1px solid #f0e6d8;
+  border-bottom: 1px solid #f0e6d8;
+}
+
+.event-details div {
+  margin: 8px 0;
+  color: #6b4c36;
+}
+
+.btn-primary,
+.btn-success,
+.btn-danger,
+.btn-secondary {
+  padding: 10px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.btn-primary {
+  background-color: #f59e0b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #d97706;
+}
+
+.btn-success {
+  background-color: #10b981;
+  color: white;
+}
+
+.btn-success:hover {
+  background-color: #059669;
+}
+
+.btn-danger {
+  background-color: #ef4444;
+  color: white;
+  padding: 8px 16px;
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-secondary {
+  background-color: #8b6b4f;
+  color: white;
+  padding: 8px 16px;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 32px;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #5c3d2e;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5d5bf;
+  border-radius: 8px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  outline: none;
+  border-color: #f59e0b;
+}
+
+.events-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .events-header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .form-container {
+    padding: 20px;
+  }
+}
+
+/* media */
+
+@media screen and (max-width:500px) {
+
+  .ham-menu {
+    cursor: pointer;
+    display: none;
+    z-index: 10;
+  }
+
+  .ul-cont {
+    gap: 10px;
+    position: absolute;
+    width: 100%;
+    right: -200%;
+    transition: all 0.5s ease-in-out;
+    top: 70px;
+    align-items: center;
+    color: rgb(0, 0, 0);
+    opacity: 0;
+    z-index: 10;
+    display: none;
+    background: #231b11;
+  }
+
+
+  .ul-cont.open {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    right: 0;
+    opacity: 1;
+  }
+
+  .navList {
+    display: block !important;
+  }
+
+  .navItem {
+    margin: 10px 0;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    margin: 0 1rem;
+  }
+
+  .ham-menu {
+    display: block;
+  }
+
+  .ham-menu.open .bar:nth-child(2) {
+    opacity: 0;
+  }
+
+  .ham-menu.open .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+  }
+
+  .ham-menu.open .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+
+  }
+}
+
+/*event edit button*/
+.btn-warning {
+  background-color: #f59e0b;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-warning:hover {
+  background-color: #d97706;
+}
+
+
+
+/* Bookings Table Styles */
+.bookings-table {
+  background: white;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 20px;
+}
+
+.table-header {
+  display: grid;
+  grid-template-columns: 60px 2fr 1.5fr 2fr 1fr;
+  background-color: #f59e0b;
+  color: white;
+  font-weight: 600;
+  padding: 12px 16px;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 60px 2fr 1.5fr 2fr 1fr;
+  padding: 12px 16px;
+  border-bottom: 1px solid #f0e6d8;
+  transition: background-color 0.2s;
+}
+
+.table-row:hover {
+  background-color: #fef3e8;
+}
+
+.table-cell {
+  padding: 4px 0;
+  color: #5c3d2e;
+}
+
+.booking-total {
+  padding: 16px;
+  background-color: #f5f0e8;
+  font-weight: 600;
+  color: #5c3d2e;
+  text-align: right;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+
+  .table-header,
+  .table-row {
+    grid-template-columns: 40px 2fr 1.5fr;
+  }
+
+  .table-header .table-cell:nth-child(4),
+  .table-header .table-cell:nth-child(5),
+  .table-row .table-cell:nth-child(4),
+  .table-row .table-cell:nth-child(5) {
+    display: none;
+  }
+}
+
+/* Info button */
+.btn-info {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btn-info:hover {
+  background-color: #2563eb;
 }

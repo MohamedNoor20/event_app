@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { UsernameValidation } from "@/components/validation/username";
 import { PasswordValidation } from "@/components/validation/password";
+import { Navbar } from "@/components/nav/nav";
 
 export default function User() {
   const [username, setUsername] = useState("");
@@ -41,7 +42,7 @@ export default function User() {
         return;
       }
 
-      router.replace("/events");
+      router.replace("/Event");
       
     } catch (err) {
       setServerError("Unable to connect. Please try again.");
@@ -51,39 +52,50 @@ export default function User() {
   };
 
   return (
-    <div className="signHeader">
-      <h1>Sign in</h1>
-      <div className="aligning">
-        <form className="form" onSubmit={handleSubmit}>
-          <UsernameValidation
-            username={username}
-            setUsername={setUsername}
-            userError={userError}
-            setUserError={setUserError}
-          />
-          <PasswordValidation
-            password={password}
-            setPassword={setPassword}
-            passError={passError}
-            setPassError={setPassError}
-          />
+    <div className="pageContainer">
+      <div className="contentWrapper">
 
-          {/* Show server-side errors (e.g. wrong credentials) */}
-          {serverError && <p className="errorMsg">{serverError}</p>}
-
-          <div className="rightSide">
-            <button
-              className={isValid ? "submitOn" : "submit"}
-              disabled={!isValid || loading}
-              type="submit"
-            >
-              {loading ? "Signing in..." : "Sign In"}
-            </button>
+        {/* Login Card */}
+        <div className="form-container">
+          <div className="cardCentered" style={{ padding: "0 0 2rem 0", background: "transparent" }}>
+            <h1 className="headerTitle">Sign In</h1>
           </div>
-        </form>
 
-        <div className="signUp">
-          <Link href={"/sign/up"}>Click Here To Sign Up</Link>
+          <form onSubmit={handleSubmit}>
+            <UsernameValidation
+              username={username}
+              setUsername={setUsername}
+              userError={userError}
+              setUserError={setUserError}
+            />
+            
+            <PasswordValidation
+              password={password}
+              setPassword={setPassword}
+              passError={passError}
+              setPassError={setPassError}
+            />
+
+            {/* Show server-side errors */}
+            {serverError && <p className="error-message">{serverError}</p>}
+
+            <div className="actionButtonsCenter">
+              <button
+                className={isValid && !loading ? "btn-primary btnLarge" : "submit btnLarge"}
+                disabled={!isValid || loading}
+                type="submit"
+                style={{ width: "100%" }}
+              >
+                {loading ? "Signing in..." : "Sign In"}
+              </button>
+            </div>
+          </form>
+
+          <div className="actionButtonsCenter mt1">
+            <Link href={"/sign/up"} style={{ color: '#000000', fontWeight: 'bold' }}>
+              Don't have an account? Sign Up Here
+            </Link>
+          </div>
         </div>
       </div>
     </div>
