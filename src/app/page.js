@@ -180,15 +180,6 @@ export default function Home() {
           </div>
         )}
       </div>
-
-      {/* Simple Footer Text */}
-      <p style={{
-        marginTop: '80px',
-        color: 'rgba(255,255,255,0.5)',
-        fontSize: '0.8rem'
-      }}>
-        Find your next experience
-      </p>
     </div>
   );
 }
