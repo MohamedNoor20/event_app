@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 export async function GET(request) {
   try {
 // Checking to make sure its admin
-  const cookieStore = cookies();
+  const cookieStore = await cookies();
   const userRole = cookieStore.get("role")?.value;
  if (userRole !== "admin") {
  return Response.json(
