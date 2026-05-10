@@ -5,7 +5,6 @@
 
 import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
-import { Navbar } from "@/components/nav/nav";
 import { UserInfo } from "@/components/UserInfo";
 
 export default function EventBookingsPage({ params }) {
@@ -50,7 +49,6 @@ export default function EventBookingsPage({ params }) {
         return (
             <div>
                 <UserInfo />
-                <Navbar />
                 <div className="container" style={{ textAlign: 'center' }}>
                     <p>Loading bookings...</p>
                 </div>
@@ -61,8 +59,6 @@ export default function EventBookingsPage({ params }) {
     return (
         <div>
             <UserInfo />
-            <Navbar />
-
             <div className="container">
                 <div className="events-header">
                     <h1>📋 Bookings for: {eventTitle}</h1>

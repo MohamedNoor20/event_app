@@ -4,7 +4,7 @@
 'use client';
 
 import { useState, useEffect, use } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'; 
 
 export default function EditEventPage({ params }) {
     const { id } = use(params);

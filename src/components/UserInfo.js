@@ -42,14 +42,14 @@ export function UserInfo() {
   };
 
   return (
-    <div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+    <div className="userinfo">
       {user ? (
         <>
           <p>
             Logged in as <b>{user.role}</b>
           </p>
 
-          <button onClick={logout} style={{ cursor: "pointer" }}>
+          <button className="userinfoBtn" onClick={logout}>
             Logout
           </button>
         </>

@@ -19,125 +19,182 @@ a {
   text-decoration: none;
 }
 
-.centerMt50 { 
-  text-align: center;
-  margin-top: 50px;
-  color: white; 
-}
-.heroCard { 
-  max-width: 650px;
-  padding: 4rem 2rem;
-  margin: 0 auto; background: white;
-  border-radius: 16px; 
-}
-.heroTitle { 
-  margin-bottom: 1.5rem; 
-  font-size: 2.5rem;
-  color: #111827;
- }
-.heroText { 
-  font-size: 1.2rem;
-  margin-bottom: 2.5rem;
-  color: #4b5563; 
-}
-.flexCenterGap1 { 
-  display: flex; gap: 1rem; 
-  justify-content: center; 
-}
-.btnLarge { 
-  padding: 0.85rem 1.75rem; 
-  font-size: 1.1rem; 
-}
-.navWrapper { 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 1rem; 
-  color: rgb(0, 0, 0); 
-}
-.cardCentered { 
-  padding: 3rem; 
-  text-align: center; 
-  background: white; 
-  border-radius: 16px; 
-  margin: 0 auto; 
-  max-width: 650px; 
-}
-.mt1 { 
-  margin-top: 1rem; 
-  display: inline-block; 
-}
-.actionButtonsCenter { 
-  display: flex; 
-  justify-content: center; 
-  margin-top: 1.5rem; 
-  gap: 1rem; 
-}
-.headerFlexWrap { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  flex-wrap: wrap; 
-  gap: 1rem; 
-  color: white; 
-  margin-bottom: 20px;
-}
-.text12 { 
-  font-size: 1.2rem; 
-  color: #111827; 
-  margin-bottom: 15px;
-}
-.flexColGap15 { 
-  display: flex; 
-  flex-direction: column; 
-  gap: 1.5rem; 
-}
-.eventCardFlex { 
-  display: flex; 
-  justify-content: space-between; 
-  align-items: center; 
-  flex-wrap: wrap; 
-  gap: 1.5rem; 
-  padding: 24px; 
-  box-sizing: border-box; 
-}
-.flex1Min { 
-  flex: 1 1 min-content; 
-}
-.eventTitleSm { 
-  font-size: 1.35rem; 
-  margin-top: 0; 
-  margin-bottom: 0.5rem; 
-  color: #111827; 
-}
-.eventCardDetails { 
-  margin: 0 0 0.75rem 0; 
-  font-size: 0.95rem; 
-  color: #6b7280; 
-}
-.pricePill { 
-  display: inline-block; 
-  color: #16a34a; 
-  background-color: #dcfce3; 
-  padding: 0.25rem 0.75rem; 
-  border-radius: 1rem; 
-  font-size: 0.85rem; 
-  font-weight: 600; 
-}
-.dangerBorder { 
-  border: 1px solid #fca5a5; 
-  color: #dc2626; 
-  background: transparent; 
-  padding: 8px 16px; 
-  border-radius: 8px; 
-  cursor: pointer; 
-  transition: 0.2s; 
-  font-weight: bold; }
-.dangerBorder:hover { 
-  background-color: #fee2e2; 
+/*footer*/
+
+.footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+  background-color: #6d522e;
 }
 
-.headerSubtitle { 
-  margin-top: 5px; 
+.footer p {
+  font-size: xx-large;
+  font-weight: 600;
+
+}
+
+/* userinfo */
+
+.userinfo {
+  display: flex;
+  gap: 10px;
+  align-Items: center;
+}
+
+.userinfoBtn {
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.userinfoBtn:hover {
+  background-color: #8d0e0e;
+}
+
+
+
+.centerMt50 {
+  text-align: center;
+  margin-top: 50px;
+  color: white;
+}
+
+.heroCard {
+  max-width: 650px;
+  padding: 4rem 2rem;
+  margin: 0 auto;
+  background: white;
+  border-radius: 16px;
+}
+
+.heroTitle {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  color: #111827;
+}
+
+.heroText {
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+  color: #4b5563;
+}
+
+.flexCenterGap1 {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.btnLarge {
+  padding: 0.85rem 1.75rem;
+  font-size: 1.1rem;
+}
+
+.navWrapper {
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  color: rgb(0, 0, 0);
+}
+
+.cardCentered {
+  padding: 3rem;
+  text-align: center;
+  background: white;
+  border-radius: 16px;
+  margin: 0 auto;
+  max-width: 650px;
+}
+
+.mt1 {
+  margin-top: 1rem;
+  display: inline-block;
+}
+
+.actionButtonsCenter {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+  gap: 1rem;
+}
+
+.headerFlexWrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.text12 {
+  font-size: 1.2rem;
+  color: #111827;
+  margin-bottom: 15px;
+}
+
+.flexColGap15 {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.eventCardFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 24px;
+  box-sizing: border-box;
+}
+
+.flex1Min {
+  flex: 1 1 min-content;
+}
+
+.eventTitleSm {
+  font-size: 1.35rem;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  color: #111827;
+}
+
+.eventCardDetails {
+  margin: 0 0 0.75rem 0;
+  font-size: 0.95rem;
+  color: #6b7280;
+}
+
+.pricePill {
+  display: inline-block;
+  color: #16a34a;
+  background-color: #dcfce3;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.dangerBorder {
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+  background: transparent;
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+  font-weight: bold;
+}
+
+.dangerBorder:hover {
+  background-color: #fee2e2;
+}
+
+.headerSubtitle {
+  margin-top: 5px;
 }
 
 /* sign */
@@ -205,6 +262,10 @@ a {
 }
 
 /* nav */
+.nav-cont {
+  padding: 1rem 0;
+  background-color: #685537;
+}
 
 .navList {
   list-style: none;
@@ -217,6 +278,11 @@ a {
   font-size: larger;
 }
 
+.navItem a:hover {
+  font-style: italic;
+  color: #740016 !important;
+  text-decoration: underline;
+}
 
 .ham-menu {
   cursor: pointer;
@@ -275,8 +341,7 @@ a {
 /* Booking Page Layout */
 .pageContainer {
   min-height: 100vh;
-  background-color: #f9fafb;
-  padding: 3rem 1rem;
+  padding: 2rem 1rem;
 }
 
 .contentWrapper {
