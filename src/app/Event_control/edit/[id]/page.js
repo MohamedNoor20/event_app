@@ -3,10 +3,11 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, use } from 'react';
 import { useRouter } from 'next/navigation';
 
 export default function EditEventPage({ params }) {
+    const { id } = use(params);
     //state for loading, error, and form data
     const router = useRouter();
     const [loading, setLoading] = useState(false);
@@ -17,7 +18,7 @@ export default function EditEventPage({ params }) {
 
     //load existing event data when page loads
     useEffect(() => {
-        fetch(`/api/Event?id=${params.id}`)
+        fetch(`/api/Event?id=${id}`)
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
@@ -33,7 +34,7 @@ export default function EditEventPage({ params }) {
                     });
                 }
             });
-    }, [params.id]);
+    }, [id]);
 
     //update form state when user types in any field
     const handleChange = (e) => {
@@ -49,7 +50,7 @@ export default function EditEventPage({ params }) {
         const res = await fetch('/api/Event', {
             method: 'PUT',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ eventId: params.id, ...form })
+            body: JSON.stringify({ eventId: id, ...form })
         });
         const data = await res.json();
 
