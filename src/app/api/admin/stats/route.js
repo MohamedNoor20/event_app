@@ -1,7 +1,6 @@
 import pool from "@/lib/db";
 import { cookies } from "next/headers";
 
-//Returning the counts for dashboard
 export async function GET(request) {
   try {
 // Check for admin
@@ -22,11 +21,8 @@ export async function GET(request) {
   totalEvents: eventsCount[0].count,
   totalBookings: bookingsCount[0].count
     });
-  } 
-catch (error) {
- console.error("Error fetching stats:", error);
- return Response.json(
- { message: "Internal server error" },
- { status: 500 }
-    ); }
+  } catch (error) {
+    console.error("Error fetching stats:", error);
+    return Response.json({ message: error.message }, { status: 500 });
+  }
 }
