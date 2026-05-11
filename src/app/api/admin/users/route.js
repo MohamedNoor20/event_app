@@ -2,9 +2,16 @@ import pool from "@/lib/db";
 import { cookies } from "next/headers";
 
 export async function GET(request) {
-  try {
-    const cookieStore = await cookies();
-    const userRole = cookieStore.get("role")?.value;
+try {
+//Using cookie to check user getting logged in is admin
+const cookieStore = await cookies();
+const userRole = cookieStore.get("role")?.value;
+// Remove them if they are not admin
+if (userRole !== "admin") {
+  return Response.json(
+   { message: "Unauthorized" },
+   { status: 403 }
+   );}
 
     if (userRole !== "admin") {
       return Response.json({ message: "Unauthorized" }, { status: 403 });
