@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import "../style/globals.css";
+import { UserInfo } from '@/components/UserInfo';
 
 export default function Home() {
   const [bookings, setBookings] = useState([]);
@@ -94,43 +95,29 @@ export default function Home() {
     );
   }
 
-  // Logged in as Admin or Organiser - show dashboard
-  if (user.Role === 'admin' || user.Role === 'organiser') {
-    return (
-      <div className="pageContainer">
-        <div className="contentWrapper">
-          <div className="card cardCentered">
-            <h1 className="headerTitle">Welcome, {user.Firstname}!</h1>
-            <p className="successText mt1">
-              Head over to the Event Control panel to manage your events.
-            </p>
-            <div className="actionButtons actionButtonsCenter">
-              <Link href="/Event">
-                <button className="btn-primary">Browse Events</button>
-              </Link>
-              <Link href="/Event_control">
-                <button className="btn-success">Manage Events</button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  // Logged in as standard user (Attendee) - show bookings
+  // Unified view for ALL logged-in users (attendees, organisers, and admins)
   return (
     <div className="pageContainer">
+        <UserInfo/>
       <div className="contentWrapper">
+
         <div className="events-header headerFlexWrap">
           <div>
             <h1 className="headerTitle">Welcome back, {user.Firstname}!</h1>
             <p className="headerSubtitle">Here are your upcoming booked events.</p>
           </div>
           
-          <Link href="/Event">
-            <button className="btn-primary">Browse More Events</button>
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+            {/* Show 'Manage Events' ONLY for admin or organiser */}
+            {(user.Role === 'admin' || user.Role === 'organiser') && (
+              <Link href="/Event_control">
+                 <button className="btn-success">Manage Events</button>
+              </Link>
+            )}
+            <Link href="/Event">
+              <button className="btn-primary">Browse More Events</button>
+            </Link>
+          </div>
         </div>
 
         {bookings.length === 0 ? (

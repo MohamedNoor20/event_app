@@ -1,60 +1,66 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Link from "next/link";
+import { useState, useEffect } from "react";
 import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
 
 export function UserInfo() {
   const [user, setUser] = useState(null);
   const router = useRouter();
   const pathname = usePathname();
 
-  const getCookie = (name) => {
-    const match = document.cookie
-      .split(";")
-      .map((c) => c.trim())
-      .find((c) => c.startsWith(name + "="));
-
-    return match ? match.split("=")[1] : null;
-  };
-
-  const loadUser = () => {
-    const session = getCookie("session");
-    const role = getCookie("role");
-
-    if (session && role) {
-      setUser({ session, role });
-    } else {
-      setUser(null);
-    }
-  };
-
   useEffect(() => {
-    loadUser();
-  }, [pathname]); 
+    const fetchUser = async () => {
+      try {
+        const res = await fetch("/api/me");
+        if (res.ok) {
+          const data = await res.json();
+          if (data.success) {
+            setUser(data.user);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch user:", error);
+      }
+    };
+    fetchUser();
+  }, [pathname]); // Re-run when pathname changes
 
-  const logout = () => {
-    document.cookie = "session=; Max-Age=0; path=/";
-    document.cookie = "role=; Max-Age=0; path=/";
-
+  const handleLogout = () => {
+    // Clear session cookies
+    document.cookie = "session=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "role=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    
+    // Refresh the router state and redirect to sign in
     setUser(null);
+    router.refresh();
     router.push("/sign/in");
   };
 
+  // Check if we are exactly on the root path
+  const isHomePage = pathname === '/';
+
   return (
-    <div className="userinfo">
+    <div className="userinfo" style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
       {user ? (
         <>
-          <p>
-            Logged in as <b>{user.role}</b>
+          <p style={{ margin: 0, fontWeight: "bold"}}>
+            Hello, <b>{user.Firstname}</b>
           </p>
 
-          <button className="userinfoBtn" onClick={logout}>
-            Logout
-          </button>
+          {/* Only show the Logout button if the current path is exactly the Home page ("/") */}
+          {isHomePage && (
+            <button 
+              className="dangerBorder userinfoBtn" 
+              onClick={handleLogout}
+              style={{ padding: "0.4rem 0.8rem", fontSize: "0.85rem", cursor: "pointer" }}
+            >
+              Logout
+            </button>
+          )}
         </>
       ) : (
-        <Link href="/sign/in">Login</Link>
+        <Link href="/sign/in" style={{ color: "white", textDecoration: "underline" }}>Login</Link>
       )}
     </div>
   );
