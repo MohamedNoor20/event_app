@@ -112,10 +112,6 @@ export function Navbar() {
               </li>
             )}
 
-            <li className="navItem">
-              <Link href="/Roles" onClick={closeMenu}>Roles</Link>
-            </li>
-
             {/* Login button only - NO Logout button */}
             {!userRole && (
               <li className="navItem">
