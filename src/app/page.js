@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { UserInfo } from "@/components/UserInfo";
 import "../style/globals.css";
 
 export default function Home() {
@@ -12,7 +11,6 @@ export default function Home() {
 
   const fetchBookings = async () => {
     try {
-      // Changed to point to our unified Book API
       const res = await fetch('/api/Book');
       const data = await res.json();
       
@@ -50,14 +48,13 @@ export default function Home() {
     if (!confirm("Are you sure you want to cancel this booking?")) return;
 
     try {
-      // Changed to point to our unified Book API
       const res = await fetch(`/api/Book?bookId=${bookId}`, {
         method: 'DELETE',
       });
       const data = await res.json();
 
       if (data.success) {
-        fetchBookings(); // Refresh the list
+        fetchBookings();
       } else {
         alert(data.message || "Failed to cancel booking.");
       }
@@ -68,10 +65,10 @@ export default function Home() {
   };
 
   if (loading) {
-     return <div className="pageContainer"><h2 className="headerTitle centerMt50">Loading...</h2></div>;
+    return <div className="pageContainer"><h2 className="headerTitle centerMt50">Loading...</h2></div>;
   }
 
-  // If not logged in it will show the original welcome screen
+  // Not logged in - show welcome screen
   if (!user) {
     return (
       <div className="successContainer">
@@ -97,14 +94,11 @@ export default function Home() {
     );
   }
 
-  // If logged in as an admin or organiser it will show a generic dashboard view
+  // Logged in as Admin or Organiser - show dashboard
   if (user.Role === 'admin' || user.Role === 'organiser') {
     return (
       <div className="pageContainer">
         <div className="contentWrapper">
-          <div className="navWrapper">
-             <UserInfo />
-          </div>
           <div className="card cardCentered">
             <h1 className="headerTitle">Welcome, {user.Firstname}!</h1>
             <p className="successText mt1">
@@ -112,10 +106,10 @@ export default function Home() {
             </p>
             <div className="actionButtons actionButtonsCenter">
               <Link href="/Event">
-                 <button className="btn-primary">Browse Events</button>
+                <button className="btn-primary">Browse Events</button>
               </Link>
               <Link href="/Event_control">
-                 <button className="btn-success">Manage Events</button>
+                <button className="btn-success">Manage Events</button>
               </Link>
             </div>
           </div>
@@ -124,14 +118,10 @@ export default function Home() {
     );
   }
 
-  // If logged in as a standard user it will show their bookings
+  // Logged in as standard user (Attendee) - show bookings
   return (
     <div className="pageContainer">
       <div className="contentWrapper">
-        <div className="navWrapper">
-           <UserInfo />
-        </div>
-
         <div className="events-header headerFlexWrap">
           <div>
             <h1 className="headerTitle">Welcome back, {user.Firstname}!</h1>
@@ -139,7 +129,7 @@ export default function Home() {
           </div>
           
           <Link href="/Event">
-             <button className="btn-primary">Browse More Events</button>
+            <button className="btn-primary">Browse More Events</button>
           </Link>
         </div>
 
@@ -147,7 +137,7 @@ export default function Home() {
           <div className="card cardCentered">
             <p className="successText text12">You did not book any events yet.</p>
             <Link href="/Event">
-               <button className="btn-primary mt1">Book your first Event here</button>
+              <button className="btn-primary mt1">Book your first Event here</button>
             </Link>
           </div>
         ) : (
@@ -160,7 +150,7 @@ export default function Home() {
                     📅 {new Date(booking.Date).toLocaleDateString()} | 📍 {booking.Location}
                   </p>
                   <div className="pricePill">
-                     💰 {booking.Amount > 0 ? `€${booking.Amount}` : 'Free'}
+                    💰 {booking.Amount > 0 ? `€${booking.Amount}` : 'Free'}
                   </div>
                 </div>
                 
