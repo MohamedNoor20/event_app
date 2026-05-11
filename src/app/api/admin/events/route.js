@@ -2,7 +2,8 @@ import pool from "@/lib/db";
 import { cookies } from "next/headers";
 // Getting list of events
 export async function GET(request) {
- try {
+  try {
+// Checking to make sure its admin
   const cookieStore = await cookies();
   const userRole = cookieStore.get("role")?.value;
 // check to make sure user is admin
